@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ product.title }}
+{% endblock %}
+{% block content %}
+<div class="header" style="height: 150px;">
+    <form class="search-form" style="width: 50%;" action="">
+        <img style="width: 25px;" src="{% static 'img/search-icon.png' %}" alt=""> <input class="container-input" type="text" placeholder="Найти объявление"> 
+        <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search-icon.png' %}" alt=""></button>
+    </form>
+</div>
+<div class="content-sidebar">
+    <section class="content-block">
+        <div>
+            <div>
+                <img src="{% static 'img/i (12).webp' %}" style="width: 100%;" alt="">
+                {% if product.image.url != null %}
+                <img src="{{ product.image.url }}"  alt="" style="height: 200px; object-fit: cover;">
+                {% else %}
+                <img src="" class="card-img-top" alt="..." style="width: 200px; object-fit: cover">
+                {% endif %}
+            </div>
+            <div>
+                <p>{{ product.date }}gjgjg</p>
+                <h1>{{ product.title }} rdddddddd</h1>
+                <div>
+                    <div>
+                        <a href="">
+                            <img src="" alt="">
+                        </a>
+                        <a href="">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                </div>
+                <h2>ОПИСАНИЕ</h2>
+                <p>{{ product.text }} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus atque adipisci soluta cumque non suscipit labore incidunt architecto nam sit. Provident esse repellat sunt corrupti totam dicta ex perspiciatis mollitia. Numquam, ipsam quaerat asperiores, minima iste ab possimus iure quidem quis, dolores ipsum error quos commodi cumque porro similique. Ut quasi itaque quam expedita similique repudiandae fuga quas possimus saepe? Ullam quo maxime quas eius cumque quia laborum natus nihil reprehenderit autem assumenda aspernatur, minus, doloribus aliquid ipsa magnam. Iusto numquam dolorem voluptatem laudantium consequatur, itaque consequuntur architecto harum beatae quas explicabo, magni sequi culpa, vero nobis ut animi? Voluptas at error deserunt quas ad a, debitis quis dolorem, delectus adipisci quasi. Vitae aut veritatis illo reiciendis dicta tenetur fugit!</p>
+                <hr>
+                <p>{{ product.author }} fjgch</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea at doloremque temporibus.</p>    
+            </div>
+        <div>
+        {% for product in product %}
+        <div>
+            <div>
+                {% if product.image.url != null %}
+                <img src="{{ product.image.url }}"  alt="" style="height: 200px; object-fit: cover;">
+                {% else %}
+                <img src="" class="card-img-top" alt="..." style="width: 200px; object-fit: cover">
+                {% endif %}
+            </div>
+            <div>
+                <p>{{ product.date }}</p>
+                <h1>{{ product.title }}</h1>
+                <div>
+                    <div>
+                        <a href="{% url 'add_to_favourite' product.id %}">
+                            <img src="{% static 'img/love-heart.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <h2>ОПИСАНИЕ</h2>
+                <p>{{ product.text }}</p>
+                <hr>
+                <p>{{ product.author }}</p>
+                <p>{{ product.number }}</p>    
+            </div>
+        <div>
+        {% endfor %}
+    </section>
+    <aside class="sidebar-block">
+        <div>
+            <b>ПОЛЬЗОВАТЕЛЬ</b>
+            <p>{{ product.author }}gkgkk</p>
+            <p>{{ user.email }}</p>
+        </div>
+        {% for product in product %}
+        <div>
+            <b>ПОЛЬЗОВАТЕЛЬ</b>
+            <p>{{ product.author }}</p>
+            <p>{{ user.email }}</p>
+        </div>
+        {% endfor %}
+    </aside>
+</div>
+{% endblock %}

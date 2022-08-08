@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Главная,Оlx
+{% endblock %}
+{% block content %}
+<div>
+    {% for post in post %}
+    <div class="category-list">
+        <img src="{% static 'img/i (2).webp' %}" alt="">
+        <h3>{{ product.title }} frsg</h3>
+        <p>{{ product.price }}7557272eg</p>
+        <br>
+        {{ product.date }} r12.52.36
+        <p>
+            <div>
+                <a href="">
+                    <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                </a>
+            </div>   
+        </p>     
+    </div>
+    {% empty %}
+    <p style="color: gray;">Пока что тут пусто вы можете добавить твит в избранное нажав на сердечко</p>
+    {% endfor %}
+</div>
+{% endblock %}

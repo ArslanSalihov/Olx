@@ -1,0 +1,257 @@
+body{
+    margin: 0;
+    background-color: whitesmoke;
+}
+a{
+    text-decoration: none;
+}
+.navbar{
+    background-color: rgba(0, 54, 59, 0.986);
+    display: flex;
+    justify-content: space-between;
+    z-index: 999;
+}
+.nav_menu{
+    display: flex;
+    list-style: none;
+    margin: 8px;
+}
+.nav_li a{
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    margin: 5px;
+}
+.nav_li{
+    cursor: pointer;
+    padding: 10px 10px 0px 20px;
+}
+.nav_li img{
+    width: 40px;
+    margin-right: 5px;
+}
+.nav_block{
+    display: flex;
+    justify-content: inherit;
+}
+.nav_btn-widget{
+display: flex;
+justify-content: space-between;
+}
+/* .tree{
+    position: relative;
+    z-index: 999;
+}
+.tree ul{
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0px;
+    background: #233;
+    width: 90px;
+}
+.tree ul a li{
+    padding: 10px;
+}
+.open ul{
+    display: block !important;
+} */
+.nav_btn{
+background-color: white;
+border: white 5px solid;
+color: rgba(0, 54, 59, 0.986);
+padding: 10px;
+transition: 0.5s;
+border-radius: 5px;
+font-weight: bold;
+margin-top: 10px;
+}
+.nav_btn:hover{
+    background-color: rgba(0, 54, 59, 0.986);
+    color: white;
+    border: white 5px solid;
+}
+.header{
+    height: 300px;
+    background-color: whitesmoke;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-input{
+    border: white 5px solid;
+    width: 450px;
+    padding: 12px;
+    height: 47px;
+    color: rgba(0, 54, 59, 0.986);
+}
+.container-input:focus{
+    outline: white 1px solid;
+}
+.btn{
+    background-color: white;
+    padding: 15px;
+    padding-left: 18px;
+    color: gray;
+    height: 50px;
+    margin-bottom: 5px;
+    border: 3px white solid;
+}
+.search-form{
+    background-color: white;
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+.category{
+    display: flex;
+    margin: 30px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: 100px;
+}
+.category-item a{
+    color: #000;
+    font-weight: bold;
+}
+.category-item{
+    width: 12%;
+}
+.category-item img{
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.register-block{
+    background-color: aliceblue;
+    margin: 50px 500px;
+    height: 350px; 
+    width: 300px; 
+    align-items: center; 
+    padding: 20px; 
+    border-radius: 10px;
+}
+.register-bg{
+    background-color: aqua;
+    display: flex;
+}
+.register-block a{
+    color: #000;
+    margin: 0 40px 0 30px;
+}
+.register-block form{
+    align-items: center; 
+    display: flex;
+    flex-direction: column;
+}
+.register-block button{
+    background-color: rgba(0, 54, 59, 0.986); 
+    border: none; 
+    width: 200px; 
+    border-radius: 10px; 
+    color: white;
+    margin-top: 10px;
+}
+.register-block a:hover{
+    border-bottom: 1px black solid;
+    padding-bottom: 18px;
+}
+.register-block input{
+    width: 100%;
+    height: 30px;
+}
+.image-icon{
+    width: 100px;
+    object-fit: cover;
+}
+.footer{
+    display: flex;
+    justify-content: space-around;
+}
+.footer a,li{
+    color: #000;
+    list-style: none;
+}
+.empty-content{
+    background-color: #cbf7ee;
+    margin-top: 30px;
+    text-align: center;
+    padding: 60px;
+}
+.name-olx{
+    margin-bottom: 30px;
+    font-weight: bolder;
+    color: rgba(0, 54, 59, 0.986);
+}
+.form-c-product{
+    background-color: whitesmoke;
+    margin: 30px;
+}
+.form-c-product input,textarea{
+    border: none;
+    background-color: whitesmoke;
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+}
+.form-c-product input,textarea:focus{
+    outline: none;
+    border-bottom: 1px solid rgba(0, 54, 59, 0.986);
+}
+.form-c-product button{
+    margin-left: 950px;
+    background-color: rgba(0, 54, 59, 0.986);
+    border: none;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+}
+.form-c{
+    background-color: white;
+    margin-top: 30px;
+    padding: 10px;
+}
+.product-list{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 50px;
+    margin-right: 50px;
+    flex-wrap: wrap;
+}
+.card{
+    width: 20%;
+    margin: 5px;
+    background-color: white;
+    align-items: center;
+}
+.content-sidebar{
+    display: flex;
+    margin: 30px;
+    justify-content: space-between;
+}
+.content-block{
+    background-color: white;
+    width: 62%;
+    padding: 1%;
+}
+.sidebar-block{
+    background-color: white;
+    width: 35%;
+    height: 33%;
+    padding: 1%;
+}
+.category-list{
+    display: flex;
+    align-items: inherit;
+    margin: 50px;
+    height: 150px;
+    justify-content: space-between;
+    background-color: aqua;
+}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Логин
+{% endblock %}
+{% block content %}
+<div class="register-bg">
+    <div class="register-block">
+        <a href="{% url 'login' %}">Войти</a><a href="{% url 'register' %}">Регистрация</a>
+        <hr>
+        <form action="{% url 'login' %}">
+            {%csrf_token %}
+            E-mail
+            <input class="container-input" style="width: 100%;" type="email" placeholder="E-mail" required id="id_email">
+            Введити пароль
+            <input class="container-input" style="width: 100%;" type="password" placeholder="Введити пароль" required id="id_password">
+            <p><button>Войти</button></p>
+            <p style="color: gray; text-align: center;font-size: small; margin-top: 5px;"> Входя в систему вы принимаете правила использования сайта</p>
+        </form>
+    </div>
+</div>
+{% endblock %}

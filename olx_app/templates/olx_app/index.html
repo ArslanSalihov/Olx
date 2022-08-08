@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Главная,Оlx
+{% endblock %}
+{% block content %}
+<div class="header">
+    <div>
+        <form class="search-form" action="{% url 'search_results' %}">
+            <img style="width: 25px;" src="{% static 'img/search-icon.png' %}" alt=""> <input class="container-input" type="text" placeholder="Найти объявление"> 
+            <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search-icon.png' %}" alt=""></button>
+        </form>
+    </div>
+</div>
+<div>
+    <h2 style="text-align: center;">Категории</h2>
+</div>
+<div class="category">
+    {% for category in category %}
+    <div class="category-item">
+        <a href="{% url 'category_detail' %}"></a>
+            {% if category.image.url != null %}
+            <img src="{{ category.image.url }}" alt="...">
+            {% else %}
+            <img src="" alt="...">
+            {% endif %}
+            <p>{{ category.title }}</p>
+        </a>
+    </div>
+    {% endfor %}
+    <div class="category-item">
+        <a href="{% url 'category_detail' %}"></a>
+            <img src="{% static 'img/i (2).webp' %}" alt="...">
+            <p>{{ category.title }}</p>
+        </a>
+    </div>
+</div>
+<h3 style="text-align: center;">Объявления</h3>
+
+<div class="product-list">
+    {% for product in product %}
+    <div class="card">
+        <a href="">
+            {% if product.image.url != null %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+            {% else %}
+            <img src="" class="card-img-top" alt="..." style="height: 200px; object-fit: cover">
+            {% endif %}
+            <hr>
+            <div>
+                <h5 style="text-align: center;">{{ product.title }}</h5>
+                <p>{{ product.text |slice:'0:50' }}</p>
+                <p><small style="font-weight: 500;">{{ product.date }}</small></p>
+                <p style="font-weight: 500;">{{ product.price }}</p>
+                <div>
+                    <a href="{% url 'add_to_favourite' product.id %}">
+                        <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                    </a>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+    <div class="card">
+        <div>
+        <a style="color: black;" href="{% url 'product_detail' %}">
+                <img src="{% static 'img/i (12).webp' %}" alt="" style="width: 200px; object-fit: cover">
+                <div>
+                    <h5 style="text-align: center;"> ghjhgghjhjgh</h5>
+                    <p> gjjjjjjjjjjj</p>
+                    <p><small>566756756</small></p>
+                    <p style="font-weight: 500;">777777777</p>
+                    <div>
+                        <a href="">
+                            <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                        </a>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="empty-content">
+    <h1 class="name-olx">Olx (Ол'эыкс)</h1>
+    <h3>Cервис объявлений № 2 в Узбекистане</h3>
+    <p>здесь вы не найдете то, что искали.<br>Нажав на кнопку "<a style="color: black; font-weight: bolder;" href="{% url 'c_product' %}">Подать объявление</a>", вы сможете разместить онлайн-объявление на любую необходимую тему<br>С помощью сервиса OLX в Узбекистане вы не можете найти все что угодно. Воспользовавшись функцией поиска, вы без труда найдете уже опубликованные объявления интересующей вас тематики.<br>OLX в Узбекистане - ваш надежный и незаменимый помощник.</p>
+</div>
+
+<p style="margin: 60px 0 0 100px;"><b>Разделы на сервисе Olx:</b>
+    <a href="">
+        {% for category in category %} 
+        {{ category.title }}
+    </a>
+    {% endfor %}
+</p>
+{% endblock %}
