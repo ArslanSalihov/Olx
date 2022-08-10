@@ -6,8 +6,8 @@
 {% block content %}
 <div class="header" style="height: 150px;">
     <form class="search-form" style="width: 50%;" action="{% url 'search_results' %}">
-        <img style="width: 25px;" src="{% static 'img/search-icon.png' %}" alt=""> <input class="container-input" type="text" placeholder="Найти объявление"> 
-        <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search-icon.png' %}" alt=""></button>
+        <img style="width: 25px;" src="{% static 'img/search_icon.png' %}" alt=""><input class="container-input" type="text" name="search" placeholder="Найти объявление" required> 
+        <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search_icon.png' %}" alt=""></button>
     </form>
 </div>
 <div>
@@ -18,7 +18,13 @@
         <p>{{ product.price }}</p>
         <br>
         {{ product.date }}
-        <p><div><a href="{% url 'add_to_favourite' %}"><img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="..."></a></div></p>     
+        <p>
+            <div>
+                <a href="{% url 'add_to_favourite' product.id %}">
+                    <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                </a>
+            </div>
+        </p>     
     </div>
     {% empty %}
     <p>по вашему запросу:{{ quary }} ничего не найдено</p>

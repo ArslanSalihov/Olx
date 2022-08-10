@@ -6,31 +6,31 @@
 {% block content %}
 <div class="header" style="height: 150px;">
     <form class="search-form" style="width: 50%;" action="{% url 'search_results' %}">
-        <img style="width: 25px;" src="{% static 'img/search-icon.png' %}" alt=""> <input class="container-input" type="text" placeholder="Найти объявление"> 
-        <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search-icon.png' %}" alt=""></button>
+        <img style="width: 25px;" src="{% static 'img/search_icon.png' %}" alt=""> <input class="container-input" type="text" name="search" required placeholder="Найти объявление"> 
+        <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search_icon.png' %}" alt=""></button>
     </form>
 </div>
 <div>
-    {% for product in product %}
-    <div class="category-list">
-        <a style="color: black;" href="{% url 'product_detail' product.id %}">
+    {% for product in category.product_set.all %}
+    <a style="color: black;" href="{% url 'product_detail' product.id %}">
+        <div class="category-list">
             {% if product.image.url != null %}
-            <img style="width: 180px; object-fit: cover;" src="{{ product.image.url }}" alt="">
+            <img style="height: 170px; object-fit: cover;" src="{{ product.image.url }}" alt="">
             {% else %}
-            <img style="width: 180px; object-fit: cover;" src="" alt="...">
+            <img style="width: 150px; object-fit: cover;" src="" alt="...">
             {% endif %}
-                <div>
-                    <p>
-                        <h3>{{ product.title }}</h3>
-                        {{ product.price }}
-                        {{ product.date }}
-                    </p>
-                    <a href="">
-                        <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
-                    </a>
-                </div>   
-        </a>
-    </div>
+            <div>
+                <p>
+                    <h3>{{ product.title }}</h3>
+                    {{ product.price }}
+                    {{ product.date }}
+                </p>
+                <a href="{% url 'add_to_favourite' product.id %}">
+                    <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                </a>
+            </div>   
+        </div>
+    </a>
     {% endfor %}
 </div>
 {% endblock %}

@@ -96,8 +96,9 @@ def category_detail(request,id):
 
 def search(request):
     quary = request.GET.get('search')
-    search_obj = Product.objects.filter(Q(title__icontains=quary))
-    return render(request, 'olx_app/search.html', {'quary':quary, 'search_obj': search_obj})
+    search_obj= Product.objects.filter(Q(title__icontains=quary))
+    return render(request, 'olx_app/search.html',{'quary':quary, 'search_obj': search_obj})
+
 
 def add_to_favourite(request,product_id):
     product = Product.objects.get(id=product_id)

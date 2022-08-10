@@ -239,7 +239,8 @@ margin-top: 10px;
 .category-list{
     display: flex;
     margin: 50px;
-    height: 150px;
-    justify-content: space-between;
+    height: 180px;
+    justify-content: inherit;
     background-color: white;
 }
+

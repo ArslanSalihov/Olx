@@ -5,21 +5,27 @@
 {% endblock %}
 {% block content %}
 <div>
+    {% for product in product %}
     <div class="category-list">
-        <img src="{% static 'img/i (2).webp' %}" alt="">
-        <h3>{{ product.title }} frsg</h3>
-        <p>{{ product.price }}7557272eg</p>
-        <br>
-        {{ product.date }} r12.52.36
-        <p>
-            <div>
-                <a href="">
-                    <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
-                </a>
-            </div>   
-        </p>     
+        <a style="color: black;" href="{% url 'product_detail' product.id %}">
+            {% if product.product.image.url != null %}
+            <img src="{{ product.product.image }}" alt="..." style="width: 150px; background-color: white;" >
+            {% else %}
+            <img src="{% static 'img/i (2).webp' %}" alt="..." style="width: 150px; background-color: white;" >
+            {% endif %}
+            <p>
+                <div>
+                    <h3>{{ product.product.title }}</h3>
+                    <p>{{ product.product.price }}</p>
+                    <br>
+                    {{ product.product.date }}
+                    <a href="{% url 'delete_favourite' product.product.id %}">
+                        <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                    </a>
+                </div>   
+            </p>     
+        </a>
     </div>
-    {% empty %}
-    <p style="color: gray;">Пока что тут пусто вы можете добавить твит в избранное нажав на сердечко</p>
+    {% endfor %}
 </div>
 {% endblock %}

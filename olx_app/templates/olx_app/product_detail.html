@@ -6,8 +6,8 @@
 {% block content %}
 <div class="header" style="height: 150px;">
     <form class="search-form" style="width: 50%;" action="">
-        <img style="width: 25px;" src="{% static 'img/search-icon.png' %}" alt=""> <input class="container-input" type="text" placeholder="Найти объявление"> 
-        <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search-icon.png' %}" alt=""></button>
+        <img style="width: 25px;" src="{% static 'img/search_icon.png' %}" alt=""> <input class="container-input" type="text" name="search" placeholder="Найти объявление" required> 
+        <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search_icon.png' %}" alt=""></button>
     </form>
 </div>
 <div class="content-sidebar">
@@ -25,6 +25,9 @@
                 <h1>{{ product.title }}</h1>
                 <div>
                     <div>
+                        <p>
+                            {{ category.category.title }}
+                        </p>
                         <a href="{% url 'add_to_favourite' product.id %}">
                             <img src="{% static 'img/love-heart.png' %}" alt="">
                         </a>
