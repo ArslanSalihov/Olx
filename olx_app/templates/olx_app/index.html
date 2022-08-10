@@ -18,7 +18,7 @@
 <div class="category">
     {% for category in category %}
     <div class="category-item">
-        <a href="{% url 'category_detail' %}"></a>
+        <a href="{% url 'category_detail' category.id %}"></a>
             {% if category.image.url != null %}
             <img src="{{ category.image.url }}" alt="...">
             {% else %}
@@ -28,60 +28,35 @@
         </a>
     </div>
     {% endfor %}
-    <div class="category-item">
-        <a href="{% url 'category_detail' %}"></a>
-            <img src="{% static 'img/i (2).webp' %}" alt="...">
-            <p>{{ category.title }}</p>
-        </a>
-    </div>
 </div>
+
 <h3 style="text-align: center;">Объявления</h3>
 
 <div class="product-list">
     {% for product in product %}
     <div class="card">
-        <a href="">
+        <a href="{% url 'product_detail' product.id %}">
             {% if product.image.url != null %}
-            <img src="{{ product.image.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+            <img src="{{ product.image.url }}" alt="...">
             {% else %}
-            <img src="" class="card-img-top" alt="..." style="height: 200px; object-fit: cover">
+            <img src="{% static 'img/i (2).webp' %}" alt="..." >
             {% endif %}
             <hr>
             <div>
                 <h5 style="text-align: center;">{{ product.title }}</h5>
-                <p>{{ product.text |slice:'0:50' }}</p>
+                <p>{{ product.text |slice:'0:29' }}</p>
                 <p><small style="font-weight: 500;">{{ product.date }}</small></p>
                 <p style="font-weight: 500;">{{ product.price }}</p>
                 <div>
                     <a href="{% url 'add_to_favourite' product.id %}">
-                        <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                        <img style="width: 40px; height: 40px; margin-right: 120px;" src="{% static 'img/love_heart.png' %}" alt="...">
                     </a>
                 </div>
             </div>
         </a>
     </div>
     {% endfor %}
-    <div class="card">
-        <div>
-        <a style="color: black;" href="{% url 'product_detail' %}">
-                <img src="{% static 'img/i (12).webp' %}" alt="" style="width: 200px; object-fit: cover">
-                <div>
-                    <h5 style="text-align: center;"> ghjhgghjhjgh</h5>
-                    <p> gjjjjjjjjjjj</p>
-                    <p><small>566756756</small></p>
-                    <p style="font-weight: 500;">777777777</p>
-                    <div>
-                        <a href="">
-                            <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
-                        </a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
 </div>
-
-
 
 <div class="empty-content">
     <h1 class="name-olx">Olx (Ол'эыкс)</h1>
@@ -90,9 +65,9 @@
 </div>
 
 <p style="margin: 60px 0 0 100px;"><b>Разделы на сервисе Olx:</b>
-    <a href="">
-        {% for category in category %} 
-        {{ category.title }}
+    {% for category in category %} 
+    <a href="{% url 'category_detail' category.id %}">
+        {{ category.title }},
     </a>
     {% endfor %}
 </p>

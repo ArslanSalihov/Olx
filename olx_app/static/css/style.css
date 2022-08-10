@@ -41,24 +41,6 @@ a{
 display: flex;
 justify-content: space-between;
 }
-/* .tree{
-    position: relative;
-    z-index: 999;
-}
-.tree ul{
-    display: none;
-    position: absolute;
-    top: 35px;
-    left: 0px;
-    background: #233;
-    width: 90px;
-}
-.tree ul a li{
-    padding: 10px;
-}
-.open ul{
-    display: block !important;
-} */
 .nav_btn{
 background-color: white;
 border: white 5px solid;
@@ -231,6 +213,13 @@ margin-top: 10px;
     background-color: white;
     align-items: center;
 }
+.card a{
+    color: #000;
+}
+.card img{
+    height: 200px;
+    object-fit: cover;
+}
 .content-sidebar{
     display: flex;
     margin: 30px;
@@ -249,9 +238,8 @@ margin-top: 10px;
 }
 .category-list{
     display: flex;
-    align-items: inherit;
     margin: 50px;
     height: 150px;
     justify-content: space-between;
-    background-color: aqua;
+    background-color: white;
 }

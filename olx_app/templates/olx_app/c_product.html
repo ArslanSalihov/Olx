@@ -13,11 +13,9 @@
             <p>Укажите название</p>
             <input type="title" required placeholder="Например,Почка-свежая">
             <p>Категория</p>
-            <select style="margin-left: 100px;" name="" id="">
-                <optgroup>Выберите категорию</optgroup>
-                <option value="cvhcgh"></option>
+            <select required>
                 {% for category in category %}
-                <option>{{ category.tile }}</option>
+                <option>{{ category.title }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -27,30 +25,8 @@
             <table>
                 <td>
                     <label style="width: 105px;" for="photo">
-                        <img class="image-icon" src="" alt="..">
+                        <img class="image-icon" src="" alt="...">
                         <input style="visibility: hidden;" type="file" name="image" id="photo" required>
-                    </label>
-                </td>
-                <td>
-                    <label style="width: 105px;" for="photo">
-                        {% if post.image.url != null %}
-                        <img src="{{ post.image.url }}" class="card-img-top" alt="...">
-                        {% else %}
-                        <img src="" alt="...">
-                        {% endif %}
-                        <input style="visibility: hidden;" type="file" name="image" id="photo">
-                    </label>
-                </td>
-                <td>
-                    <label style="width: 105px;" for="photo">
-                        <img class="image-icon" src="{% static 'img/i (2).webp' %}" alt="...">
-                        <input style="visibility: hidden;" type="file" name="image" id="photo">
-                    </label>
-                </td>
-                <td>
-                    <label style="width: 105px;" for="photo">
-                        <img class="image-icon" src="{% static 'img/i (2).webp' %}" alt="...">
-                        <input style="visibility: hidden;" type="file" name="image" id="photo">
                     </label>
                 </td>
             </table>

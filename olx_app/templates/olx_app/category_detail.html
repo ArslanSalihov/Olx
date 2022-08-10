@@ -11,39 +11,24 @@
     </form>
 </div>
 <div>
-    <div class="category-list">
-        <img src="{% static 'img/i (2).webp' %}" alt="">
-        <h3>{{ product.title }} frsg</h3>
-        <p>{{ product.price }}7557272eg</p>
-        <br>
-        {{ product.date }} r12.52.36
-        <p>
-            <div>
-                <a href="">
-                    <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
-                </a>
-            </div>   
-        </p>     
-    </div>
     {% for product in product %}
     <div class="category-list">
-        <a href="{% url 'product_detail' product.id %}">
+        <a style="color: black;" href="{% url 'product_detail' product.id %}">
             {% if product.image.url != null %}
-            <img src="{{ product.image.url }}" alt="">
+            <img style="width: 180px; object-fit: cover;" src="{{ product.image.url }}" alt="">
             {% else %}
-            <img src="" alt="...">
+            <img style="width: 180px; object-fit: cover;" src="" alt="...">
             {% endif %}
-            <h3>{{ product.title }} frsg</h3>
-            <p>{{ product.price }}7557272eg</p>
-            <br>
-            {{ product.date }} r12.52.36
-            <p>
                 <div>
+                    <p>
+                        <h3>{{ product.title }}</h3>
+                        {{ product.price }}
+                        {{ product.date }}
+                    </p>
                     <a href="">
                         <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
                     </a>
                 </div>   
-            </p>     
         </a>
     </div>
     {% endfor %}
