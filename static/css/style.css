@@ -1,0 +1,323 @@
+body{
+    margin: 0;
+    background-color: whitesmoke;
+}
+a{
+    text-decoration: none;
+}
+.navbar{
+    background-color: rgba(0, 54, 59, 0.986);
+    display: flex;
+    justify-content: space-between;
+    z-index: 999;
+}
+.nav_menu{
+    display: flex;
+    list-style: none;
+    margin: 8px;
+}
+.nav_li a{
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    margin: 5px;
+}
+.nav_li{
+    cursor: pointer;
+    padding: 10px 10px 0px 20px;
+}
+.nav_li img{
+    width: 40px;
+    margin-right: 5px;
+}
+.nav_block{
+    display: flex;
+    justify-content: inherit;
+}
+.nav_btn-widget{
+display: flex;
+justify-content: space-between;
+}
+.nav_btn{
+background-color: white;
+border: white 5px solid;
+color: rgba(0, 54, 59, 0.986);
+padding: 10px;
+transition: 0.3s;
+border-radius: 5px;
+font-weight: bold;
+margin-top: 10px;
+}
+.nav_btn:hover{
+    background-color: rgba(0, 54, 59, 0.986);
+    color: white;
+    border: white 5px solid;
+}
+.header{
+    height: 300px;
+    background-color: whitesmoke;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-input{
+    border: white 5px solid;
+    width: 450px;
+    padding: 12px;
+    height: 47px;
+    color: rgba(0, 54, 59, 0.986);
+}
+.container-input:focus{
+    outline: white 1px solid;
+}
+.btn{
+    background-color: white;
+    padding: 15px;
+    padding-left: 18px;
+    color: gray;
+    height: 50px;
+    margin-bottom: 5px;
+    border: 3px white solid;
+}
+.search-form{
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.category{
+    display: flex;
+    margin: 5%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+.category-item a{
+    color: #000;
+    font-weight: bold;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+}
+.category-item h4{
+    text-align: center;
+}
+.category-item{
+    width: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.category-item img{
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.register-block{
+    background-color: white;
+    margin: 50px 500px;
+    height: 340px; 
+    width: 300px; 
+    align-items: center; 
+    padding: 20px; 
+    border-radius: 10px;
+}
+.register-bg{
+    background-color: aqua;
+    display: flex;
+}
+.register-block a{
+    color: #000;
+    margin: 0 40px 0 30px;
+}
+.register-block form{
+    align-items: center; 
+    display: flex;
+    flex-direction: column;
+}
+.register-block button{
+    background-color: rgba(0, 54, 59, 0.986); 
+    border: none; 
+    width: 200px; 
+    border-radius: 10px; 
+    color: white;
+    margin-top: 10px;
+    height: 30px;
+}
+.register-block input{
+    width: 100%;
+    height: 20px;
+}
+.image-icon{
+    width: 100px;
+    object-fit: cover;
+}
+.footer{
+    display: flex;
+    justify-content: space-around;
+}
+.footer a,li{
+    color: #000;
+    list-style: none;
+}
+.empty-content{
+    background-color: #cbf7ee;
+    margin-top: 30px;
+    text-align: center;
+    padding: 60px;
+}
+.name-olx{
+    margin-bottom: 30px;
+    font-weight: bolder;
+    color: rgba(0, 54, 59, 0.986);
+}
+.form-c-product{
+    background-color: whitesmoke;
+    margin: 30px;
+    font-size: 20px;
+}
+.form-c-product input,textarea{
+    border: none;
+    background-color: whitesmoke;
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+}
+.form-c-textarea{
+    resize: none; 
+    height: 300px;
+    width: 450px;
+    padding: 20px;
+}
+.form-c-textarea:focus{
+    outline: none;
+}
+.form-c-product input:focus{
+    outline: none;
+    border-bottom: 1px solid rgba(0, 54, 59, 0.986);
+}
+.form-c-product button{
+    align-self: flex-end;
+    background-color: rgba(0, 54, 59, 0.986);
+    border: none;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+}
+.form-c{
+    background-color: white;
+    margin-top: 30px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.product-list{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 50px;
+    margin-right: 50px;
+    flex-wrap: wrap;
+}
+.card{
+    width: 17%;
+    margin: 1%;
+    padding: 1%;
+    background-color: white;
+    align-items: center;
+}
+.card a{
+    color: #000;
+}
+.card img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+.content-sidebar{
+    display: flex;
+    margin: 30px;
+    justify-content: space-between;
+}
+.content-block{
+    background-color: white;
+    width: 62%;
+    padding: 1%;
+}
+.sidebar-block{
+    background-color: white;
+    width: 35%;
+    height: 33%;
+    padding: 1%;
+    margin-left: 1%;
+}
+.category-list{
+    display: flex;
+    margin: 50px;
+    height: 180px;
+    justify-content: inherit;
+    background-color: white;
+}
+.category-list img{
+width: 170px;
+height: 170px;
+object-fit: cover;
+margin-right: 10px;
+}
+.paginator-widget{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    cursor: pointer;
+}
+.paginator-widget a{
+    color: rgba(0, 54, 59, 0.986);
+    font-weight: bold;
+    font-size: 20px;
+}
+.paginator-num{
+    color: rgba(0, 54, 59, 0.986);
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    width: 30%;
+    padding: 15px;
+    margin: 5px;
+    background-color: silver;
+}
+.paginator-block{
+    display: flex;
+}
+.paginator-num:hover{
+    background-color: white;
+    color: rgba(0, 54, 59, 0.986);
+}
+.us-form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+}
+.us-form input{
+    margin: 20px;
+    height: 10px;
+}
+.us-form textarea{
+    background-color: white;
+    height: 60px;
+    margin: 20px;
+}
+.us-form textarea:focus{
+    border: none;
+}
