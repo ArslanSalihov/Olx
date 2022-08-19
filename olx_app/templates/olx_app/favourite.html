@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-Главная,Оlx
+Избранное
 {% endblock %}
 {% block content %}
 <div>
@@ -17,10 +17,9 @@
                 <div>
                     <h3>{{ product.product.title }}</h3>
                     <p>{{ product.product.price }}</p>
-                    <br>
-                    {{ product.product.date }}
+                    <p>{{ product.product.date }}</p>
                     <a href="{% url 'delete_favourite' product.product.id %}">
-                        <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                        <img style="width: 15px; height: 20px;" src="{% static 'img/trash-can-solid.svg' %}" alt="...">
                     </a>
                 </div>   
             </p>     

@@ -7,31 +7,33 @@
 <div class="header">
     <div>
         <form class="search-form" action="{% url 'search_results' %}" method="get">
-            <img style="width: 25px;" src="{% static 'img/search_icon.png' %}" alt=""> <input class="container-input" type="text" name="search" placeholder="Найти объявление" required> 
-            <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search_icon.png' %}" alt=""></button>
+            <img style="width: 25px;" src="{% static 'img/search_icon.png' %}"><input class="container-input" style="height: 25px;" type="text" name="search" placeholder="Найти объявление" required> 
+            <button class="btn">Поиск</button>
         </form>
     </div>
 </div>
 <div>
     <h2 style="text-align: center;">Категории</h2>
 </div>
+
 <div class="category">
     {% for category in category %}
     <div class="category-item">
-        <a href="{% url 'category_detail' category.id %}"></a>
+        <a href="{% url 'category_detail' category.id %}">
             {% if category.image.url != null %}
             <img src="{{ category.image.url }}" alt="...">
             {% else %}
-            <img src="" alt="...">
+            <img src="{% static 'img/i (2).webp' %}" alt="...">
             {% endif %}
-            <p>{{ category.title }}</p>
+            <h4> {{ category.title }}</h4>
         </a>
     </div>
     {% endfor %}
 </div>
+
 <h3 style="text-align: center;">Объявления</h3>
 <div class="product-list">
-    {% for product in product %}
+    {% for product in page_obj %}
     <div class="card">
         <a href="{% url 'product_detail' product.id %}">
             {% if product.image.url != null %}
@@ -39,7 +41,6 @@
             {% else %}
             <img src="{% static 'img/i (2).webp' %}" alt="..." >
             {% endif %}
-            <hr>
             <div>
                 <h5 style="text-align: center;">{{ product.title }}</h5>
                 <p>{{ product.text |slice:'0:29' }}</p>
@@ -47,7 +48,7 @@
                 <p style="font-weight: 500;">{{ product.price }}</p>
                 <div>
                     <a href="{% url 'add_to_favourite' product.id %}">
-                        <img style="width: 40px; height: 40px; margin-right: 120px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                        <img style="width: 40px; height: 40px; text-align: start;" src="{% static 'img/love_heart.png' %}" alt="...">
                     </a>
                 </div>
             </div>
@@ -56,16 +57,36 @@
     {% endfor %}
 </div>
 
+<div class="paginator-widget">
+    <div>
+        <span class="paginator-block">
+            {% if page_obj.has_previous %}
+            <div class="paginator-num">
+                <a href="?page={{ page_obj.previous_page_number }}">Back</a>
+            </div>
+            {% endif %}
+            <div class="paginator-num">
+                {{ page_obj.number }}
+            </div>
+            {% if page_obj.has_next %}
+            <div class="paginator-num">
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            </div>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
 <div class="empty-content">
     <h1 class="name-olx">Olx (Ол'эыкс)</h1>
     <h3>Cервис объявлений № 2 в Узбекистане</h3>
     <p>здесь вы не найдете то, что искали.<br>Нажав на кнопку "<a style="color: black; font-weight: bolder;" href="{% url 'c_product' %}">Подать объявление</a>", вы сможете разместить онлайн-объявление на любую необходимую тему<br>С помощью сервиса OLX в Узбекистане вы не можете найти все что угодно. Воспользовавшись функцией поиска, вы без труда найдете уже опубликованные объявления интересующей вас тематики.<br>OLX в Узбекистане - ваш надежный и незаменимый помощник.</p>
 </div>
 
-<p style="margin: 60px 0 0 100px;"><b>Разделы на сервисе Olx:</b>
+<p style="margin: 40px;"><b>Разделы на сервисе Olx:</b>
     {% for category in category %}
     <a style="color: black;" href="{% url 'category_detail' category.id %}">
-        {{ category.title }}
+        {{ category.title }},
     </a>
     {% endfor %}
 </p>

@@ -1,3 +1,4 @@
+from datetime import date
 from django.db import models
 from django.utils import timezone
 from django.shortcuts import reverse
@@ -7,9 +8,6 @@ class Category(models.Model):
     title = models.CharField('название', max_length=255)
     image = models.ImageField(blank = True, null = True)
 
-    def get_link(self):
-        return reverse ('category_detail_url',kwargs = {'id':self})
-    
     class Meta:
         verbose_name ='категория'
         verbose_name_plural ='категории'
@@ -25,9 +23,7 @@ class Product(models.Model):
     users = models.ManyToManyField(User, related_name='favourite_product')
     text = models.TextField('описание', default="text")
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
-
-    def get_link(self):
-        return reverse ('product_detail_url',kwargs = {'id':self})
+    date = models.DateTimeField('дата', default=timezone.now)
 
     class Meta:
         verbose_name ='продукт'

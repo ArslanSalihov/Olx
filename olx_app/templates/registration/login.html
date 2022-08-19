@@ -6,16 +6,16 @@
 {% block content %}
 <div class="register-bg">
     <div class="register-block">
-        <a href="{% url 'login' %}">Войти</a><a href="{% url 'register' %}">Регистрация</a>
+        <a style="border-bottom: 1px black solid; padding: 10px;" href="{% url 'login' %}">Войти</a><a style="padding: 10px;" href="{% url 'register' %}">Регистрация</a>
         <hr>
-        <form action="{% url 'login' %}">
-            {%csrf_token %}
-            E-mail
-            <input class="container-input" style="width: 100%;" type="email" placeholder="E-mail" required id="id_email">
-            Введити пароль
-            <input class="container-input" style="width: 100%;" type="password" placeholder="Введити пароль" required id="id_password">
-            <p><button>Войти</button></p>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            {{ form.username.label_tag }}
+            <input class="container-input" style="width: 80%;" placeholder="Ваше имя" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="120" required="" id="id_username">
+            {{ form.password.label_tag }}
+            <input class="container-input" style="width: 80%;" type="password" placeholder="Введити пароль" name="password" autocomplete="current-password" required="" id="id_password">
             <p style="color: gray; text-align: center;font-size: small; margin-top: 5px;"> Входя в систему вы принимаете правила использования сайта</p>
+            <button type="submit">Войти</button>
         </form>
     </div>
 </div>

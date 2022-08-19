@@ -6,16 +6,18 @@
 {% block content %}
 <div class="register-bg">
     <div class="register-block">
-        <a href="{% url 'login' %}">Войти</a><a href="{% url 'register' %}">Регистрация</a>
+        <a style="padding: 10px;" href="{% url 'login' %}">Войти</a><a style="border-bottom: 1px black solid; padding: 10px;" href="{% url 'register' %}">Регистрация</a>
         <hr>
-        <form action="{% url 'login' %}">
-            {%csrf_token %}
-            Введите E-mail
-            <input class="container-input" type="email" placeholder="Введите E-mail" required id="id_email">
-            Создайте пароль
-            <input class="container-input" type="password" placeholder="Создайте пароль" required id="id_password">
-            <button>Войти</button>
-            <p style="color: gray; margin-top: 5px; font-size: small; text-align: center;"><input style="height: 20px;" type="checkbox" required>вы принимаете правила использования сайта и ислам</p>
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            {{ form.username.label_tag }}
+            <input class="container-input" style="width: 80%;" type="text" name="username" placeholder="Ваше имя" autofocus="" autocapitalize="none" autocomplete="username" maxlength="120" required="" id="id_username">
+            {{ form.email.label_tag }}
+            <input class="container-input" style="width: 80%;" type="email" name="email" placeholder="Ваш адрес электронной почты" autofocus="" autocapitalize="none" autocomplete="email" maxlength="120" required="" id="id_email">
+            {{ form.password.label_tag }}
+            <input class="container-input" style="width: 80%;" type="password" name="password" placeholder="Создайте пароль" autocomplete="current-password" required="" id="id_password">
+            <p style="color: gray; margin-top: 5px; font-size: small; text-align: center;">вы принимаете правила использования сайта и ислам <input style="height: 15px;" type="checkbox" required></p>
+            <button type="submit">Регистрация</button>
         </form>
     </div>
 </div>

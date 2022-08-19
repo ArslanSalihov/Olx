@@ -4,28 +4,29 @@
 {{ quary }}
 {% endblock %}
 {% block content %}
-<div class="header" style="height: 150px;">
-    <form class="search-form" style="width: 50%;" action="{% url 'search_results' %}">
-        <img style="width: 25px;" src="{% static 'img/search_icon.png' %}" alt=""><input class="container-input" type="text" name="search" placeholder="Найти объявление" required> 
-        <button class="btn">Поиск <img style="width: 20px;" src="{% static 'img/search_icon.png' %}" alt=""></button>
-    </form>
-</div>
+<h1 style="text-align: center;">По запросу {{ quary }} найдено</h1>
 <div>
     {% for product in search_obj %}
+<a style="color: black;" href="{% url 'product_detail' product.id %}">
     <div class="category-list">
+        {% if product.image.url != null %}
         <img src="{{ product.image.url }}" alt="">
-        <h3>{{ product.title }}</h3>
-        <p>{{ product.price }}</p>
-        <br>
-        {{ product.date }}
-        <p>
-            <div>
+        {% else %}
+        <img src="{% static 'img/i (2).webp' %}" alt="...">
+        {% endif %}
+        <div>
+            <p><h3>{{ product.title }}</h3><p>
+            {{ product.text }}
+            <p>{{ product.price }}</p>
+            <div style="display: flex;">
+                <p style="margin-right: 750px;">{{ product.date }}</p>
                 <a href="{% url 'add_to_favourite' product.id %}">
-                    <img style="width: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
+                    <img style="width: 40px; height: 40px;" src="{% static 'img/love_heart.png' %}" alt="...">
                 </a>
             </div>
-        </p>     
+        </div>   
     </div>
+</a>
     {% empty %}
     <p>по вашему запросу:{{ quary }} ничего не найдено</p>
     {% endfor %}

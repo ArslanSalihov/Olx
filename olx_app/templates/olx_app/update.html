@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Редактировать {{ product.title }}
+{% endblock %}
+{% block content %}
+<div class="form-c-product">
+    <h1>Редактируйте объявление</h1>
+    <form action="{% url 'update' product.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-c">
+            <h2>Опишите в подробностях</h2>
+            <p>Укажите название</p>
+            <input type="text" name="title" required placeholder="Например,iphone-15">
+        </div>
+        <div class="form-c">
+            <h2>Фото</h2>
+            <p>Измените фото</p>
+            <table>
+                <td>
+                    <label style="width: 105px;" for="photo">
+                        <img class="image-icon" src="{% static 'img/i (2).webp' %}" alt="...">
+                    </label>
+                    <input style="visibility: hidden;" type="file" name="image" id="photo">
+                </td>
+            </table>
+        </div>
+        <div class="form-c">
+            <p>Измените описание</p>
+            <textarea style="resize: none; height: 300px;" name="text" cols="70" rows="10" placeholder="Напишите описание того чего хотите выставить на продажу" required></textarea>
+        </div>
+        <div class="form-c">
+            <h2>Контакты</h2>
+            <p>E-mail</p>
+            <input type="email" placeholder="Ваш адрес электронной почты">
+            <p>Цена</p>
+            <input placeholder="Цена" type="number" name="price" required>
+        </div>
+        <div class="form-c">
+            <button type="submit">Изменить</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

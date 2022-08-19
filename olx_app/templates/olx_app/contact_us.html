@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Обратная связь
+{% endblock %}
+{% block content %}
+{% if message_name %}
+<p>Благодарны вам за ваше обращение к нам, {{ message_name }}.</p>
+<p>Мы получим ваше письмо и в кратчайшие сроки проверим его.</p>
+{% else %}
+<div style="background-color:  whitesmoke;">
+    <p style="text-align: center; font-size: 25px;">Обратная связь с нами</p>
+    <div>
+        <form action="{% url 'contact_us' %}" method="POST" class="us-form">
+            {% csrf_token %}
+            <div>
+                <input type="text" class="container-input" style="border-radius: 10px;" placeholder="Ваше имя" required name="message_name">
+            </div>
+            <div>
+                <input type="email" class="container-input" style="border-radius: 10px;" placeholder="Ваш адрес электронной почты" required name="message_email">
+            </div>
+            <div>
+                <textarea class="form-c-textarea" cols="70" rows="10"  name="message" placeholder="Напишите сообщение" required></textarea>
+            </div>
+            <button class="nav_btn" style="width: 15%; border-radius: 20px;" >Отправить</button>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

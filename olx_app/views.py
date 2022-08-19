@@ -1,22 +1,20 @@
-from email.policy import default
-from fileinput import filename
-from itertools import product
-from os import name
-from tkinter import ALL
-from tkinter.ttk import Entry
-from turtle import title
+from email import message
 from django.shortcuts import render,redirect,reverse
 from .models import Product,Category,Favourite
 from django.contrib.auth.models import User
 from django.core.files.storage import  FileSystemStorage
 from django.db.models import Q
 from olx_app.forms import RegisterForm
-
+from django.core.paginator import Paginator
+from django.core.mail import send_mail
 
 def index(request):
     product = Product.objects.all()
     category = Category.objects.all()
-    return render(request,'olx_app/index.html', {'product':product, 'category':category})
+    paginator = Paginator(product,4)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request,'olx_app/index.html', {'page_obj':page_obj, 'category':category})
 
 def c_product(request):
     product = Product.objects.all()
@@ -30,7 +28,7 @@ def create(request):
         product.text = request.POST.get('text')
         product.price = request.POST.get('price')
         product.author = User.objects.get(id=request.user.id)
-        category = Category.objects.all()
+        product.category = Category.objects.get(id = request.POST.get('category'))
         if request.FILES.get('image',False) !=False:
             myfile = request.FILES['image']
             fs = FileSystemStorage()
@@ -38,15 +36,17 @@ def create(request):
             product.image = myfile
         product.save()
         return redirect('index')
-    return render(request, 'olx_app', {'product':product, 'category':category})
-
+    return render(request, 'olx_app/index.html', {'product':product})
 
 def update(request,id):
     product = Product.objects.get(id = id)
+    category = Category.objects.get(id = id)
     if request.method == 'POST':
+        product.email = request.POST.get('email')
         product.title = request.POST.get('title')
         product.text = request.POST.get('text')
         product.price = request.POST.get('price')
+        product.category = Category.objects.get(id = request.POST.get('category'))
         if request.FILES.get('image',False) !=False:
             myfile = request.FILES['image']
             fs = FileSystemStorage()
@@ -55,14 +55,14 @@ def update(request,id):
         product.author = User.objects.get(id=request.user.id)
         product.save()
         return redirect('index')
-    return render(request, 'olx_app/update.html', {'product':product})
+    return render(request,'olx_app/update.html',{'product':product, 'category':category})
 
-def delete_post(request,id):
+def delete_product(request,id):
     product = Product.objects.get(id = id)
-    if request.method == 'POST':
+    if request.user.is_authenticated:
         product.delete()
         return redirect(reverse('index'))
-    return render(request, 'olx_app',{'product':product})
+    return redirect('login')
 
 def register(request):
     if request.method == 'POST':
@@ -99,27 +99,37 @@ def search(request):
     search_obj= Product.objects.filter(Q(title__icontains=quary))
     return render(request, 'olx_app/search.html',{'quary':quary, 'search_obj': search_obj})
 
-
 def add_to_favourite(request,product_id):
     product = Product.objects.get(id=product_id)
     if request.user.is_authenticated:
         if not request.user.favourite_set.filter(product=product).exists():
-            item = Favourite()
-            item.product = product
-            item.user = request.user
-            item.save()
+            i = Favourite()
+            i.product = product
+            i.user = request.user
+            i.save()
         return redirect('index')
-    return redirect('authorisation')
+    return redirect('login')
 
-def delete_favourite(request, product_id):
-    item = Favourite.objects.get(id = product_id)
+def delete_favourite(request,product_id):
+    i = Favourite.objects.get(id = product_id)
     if request.user.is_authenticated:
-        item.delete()
+        i.delete()
         return redirect('favourite')
-    return redirect('authorisation')
+    return redirect('login')
 
 def favourite(request):
     if request.user.is_authenticated:
         product = Favourite.objects.filter(user=request.user)
         return render(request, 'olx_app/favourite.html', {'product':product})
-    return redirect('authorisation')
+    return redirect('login')
+
+def contact_us(request):
+    if request.method == 'POST':
+        message_name = request.POST['message_name']
+        message_email = request.POST['message_email']
+        message = request.POST['message']
+        context = {'message_name':message_name, 'message_email':message_email, 'message':message}
+        send_mail(message_name,message,message_email,['salihovarslan555@gmail.com'])
+        return render(request, 'Olx_app/contact_us.html', context)
+    else:
+        return render(request, 'Olx_app/contact_us.html')
